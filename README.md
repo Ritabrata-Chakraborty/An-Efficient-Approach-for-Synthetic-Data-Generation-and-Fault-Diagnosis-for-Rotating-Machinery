@@ -34,24 +34,24 @@ Fault diagnosis in rotating machinery is often hindered by the scarcity of fault
 
 ```
 📁 Predictive Maintenance/
-├── 📓 Final.ipynb                 # Complete implementation pipeline
-├── 📋 README.md                   # This documentation
-├── 📂 Models/                     # Trained model files
-│   ├── 🧠 GAN_Models/            # Generator and Discriminator models
-│   │   └── *.pth                 # WGAN models with different configurations
-│   └── 🎯 Classifiers/           # Fault classification models
-│       └── *.pth                 # Trained classifier models
-├── 📊 Generated_Data/            # Synthetic vibration signals
-│   └── *_generated_*.csv         # Generated samples for each fault class
-├── 📈 Results/                   # Experimental results and metrics
-│   ├── *_generation_results.csv  # Generation quality metrics
-│   ├── *_training_time.npy       # Training performance metrics
-│   └── discriminator_training_metrics_*.csv # Classification results
-├── 🎨 Plots/                     # Visualizations and analysis plots
-├── 📁 Datasets/                  # Original dataset files
+├── 📓 Final.ipynb                     
+├── 📋 README.md                       
+├── 📂 Models/                                  # Trained model files
+│   ├── 🧠 GAN_Models/                          # Generator and Discriminator models
+│   │   └── *.pth                      
+│   └── 🎯 Classifiers/                         # Fault classification models
+│       └── *.pth                  
+├── 📊 Generated_Data/                          # Synthetic vibration signals
+│   └── *_generated_*.csv         
+├── 📈 Results/                                 # Experimental results and metrics
+│   ├── *_generation_results.csv  
+│   ├── *_training_time.npy      
+│   └── discriminator_training_metrics_*.csv 
+├── 🎨 Plots/                                   # Visualizations and analysis plots
+├── 📁 Datasets/                                # Original dataset files
 │   └── CWRU/                     # Case Western Reserve University dataset
-│       ├── DE/                   # Drive End data
-│       └── FE/                   # Fan End data
+│       ├── DE/                   
+│       └── FE/                   
 ```
 
 ## 🚀 Key Features
