@@ -6,7 +6,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.9+-red.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-Commercial-orange.svg)](LICENSE)
 
-## 📄 Paper Information
+## Paper Information
 
 This repository contains the official implementation of the paper:
 
@@ -19,60 +19,60 @@ This repository contains the official implementation of the paper:
 - **Publication**: IET Conference Proceedings 2025(10):241-247
 - **DOI**: [10.1049/icp.2025.2364](https://doi.org/10.1049/icp.2025.2364)
 
-## 🔍 Abstract
+## Abstract
 
 Fault diagnosis in rotating machinery is often hindered by the scarcity of fault samples and the resulting class imbalance. Generative Adversarial Networks (GANs) are effective at dealing with this issue. In this work, an efficient Auxiliary Classifier Wasserstein GAN with Gradient Penalty (ACWGAN-GP)-based framework for synthetic data generation and fault classification has been implemented. This approach leverages a Temporal Convolutional Network (TCN) discriminator and a 1D-CNN generator. Both models incorporate positional embeddings, enabling a single trained network to generate diverse time-series representations that mimic the variability observed in real-world data. To ensure and evaluate the quality of the generated samples, statistical similarity evaluations were conducted using four popular methods, including Pearson Correlation Coefficient (PCC), Cosine Similarity (CS), Kullback-Leibler Divergence (KLDiv), and Maximum Mean Discrepancy (MMD). The generated data effectively augments the limited fault samples, mitigating class imbalance and enhancing the robustness of fault diagnosis. In the proposed framework, the discriminator plays a dual role - it guides the generator during adversarial training and functions independently as a fault classifier. The results of different bearing faults are validated using the CWRU bearing dataset. The obtained results demonstrate the robustness and effectiveness of the present approach.
 
-## 🌟 Key Contributions
+## Key Contributions
 
 - **Novel AC-WGAN Architecture**: Auxiliary Classifier Wasserstein GAN with Temporal Convolutional Networks for high-quality synthetic vibration data generation
 - **Comprehensive Fault Diagnosis**: Multi-class bearing fault classification with improved accuracy through data augmentation
 - **Statistical Validation**: Rigorous evaluation of generated data quality using statistical metrics and frequency domain analysis
 - **Industrial Applicability**: Demonstrated effectiveness on the widely-used CWRU bearing dataset with practical implications
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
-📁 Predictive Maintenance/
-├── 📓 Final.ipynb                     
-├── 📋 README.md                       
-├── 📂 Models/                                  # Trained model files
-│   ├── 🧠 GAN_Models/                          # Generator and Discriminator models
+Predictive Maintenance/
+├── Final.ipynb                     
+├── README.md                       
+├── Models/                                  # Trained model files
+│   ├── GAN_Models/                          # Generator and Discriminator models
 │   │   └── *.pth                      
-│   └── 🎯 Classifiers/                         # Fault classification models
+│   └── Classifiers/                         # Fault classification models
 │       └── *.pth                  
-├── 📊 Generated_Data/                          # Synthetic vibration signals
+├── Generated_Data/                          # Synthetic vibration signals
 │   └── *_generated_*.csv         
-├── 📈 Results/                                 # Experimental results and metrics
+├── Results/                                 # Experimental results and metrics
 │   ├── *_generation_results.csv  
 │   ├── *_training_time.npy      
 │   └── discriminator_training_metrics_*.csv 
-├── 🎨 Plots/                                   # Visualizations and analysis plots
-├── 📁 Datasets/                                # Original dataset files
+├── Plots/                                   # Visualizations and analysis plots
+├── Datasets/                                # Original dataset files
 │   └── CWRU/                     # Case Western Reserve University dataset
 │       ├── DE/                   
 │       └── FE/                   
 ```
 
-## 🚀 Key Features
+## Key Features
 
-### 🎯 Advanced GAN Architecture
+### Advanced GAN Architecture
 - **Auxiliary Classifier WGAN**: Combines generation quality with classification accuracy
 - **Temporal Convolutional Networks**: Captures temporal dependencies in vibration signals
 - **Gradient Penalty**: Ensures stable training and high-quality generation
 
-### 📊 Comprehensive Evaluation
+### Comprehensive Evaluation
 - **Statistical Metrics**: Mean, standard deviation, skewness, and kurtosis comparison
 - **Frequency Domain Analysis**: FFT-based spectral characteristic preservation
 - **Classification Performance**: Fault diagnosis accuracy assessment
 - **Computational Efficiency**: Training time and resource utilization analysis
 
-### 🔧 Industrial Applications
+### Industrial Applications
 - **Multi-Severity Fault Detection**: Handles varying fault severities and types
 - **Real-time Compatibility**: Efficient inference for industrial monitoring systems
 - **Scalable Architecture**: Adaptable to different machinery types and fault patterns
 
-## 📋 Requirements
+## Requirements
 
 ### Dependencies
 ```
@@ -85,7 +85,7 @@ scipy>=1.7.0
 tqdm>=4.62.0
 ```
 
-## 🎯 Dataset Information
+## Dataset Information
 
 The implementation uses the **Case Western Reserve University (CWRU) Bearing Dataset**:
 
@@ -103,7 +103,7 @@ The implementation uses the **Case Western Reserve University (CWRU) Bearing Dat
 - **Sensor Locations**: Drive End (DE) and Fan End (FE)
 - **Load Conditions**: 0-3 HP motor loads
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone Repository
 ```bash
@@ -122,7 +122,7 @@ pip install -r requirements.txt
 jupyter notebook Final.ipynb
 ```
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please follow these steps:
 
@@ -132,7 +132,7 @@ We welcome contributions! Please follow these steps:
 4. Push to the branch (`git push origin feature/new-feature`)
 5. Create a Pull Request
 
-## 📄 Citation
+## Citation
 
 If you use this code in your research, please cite our paper:
 
@@ -150,23 +150,23 @@ If you use this code in your research, please cite our paper:
 }
 ```
 
-## 📧 Contact
+## Contact
 
 For questions or collaboration opportunities:
 
 - **Ritabrata Chakraborty**: [ritabratabits@gmail.com]
 
-## 📜 License
+## License
 
 This project is licensed under a Commercial License - see the [LICENSE](LICENSE) file for details. 
 
-**⚠️ Commercial License Notice:**
+** Commercial License Notice:**
 - This software is proprietary and requires a paid license for commercial use
 - Academic and research use may be permitted under specific terms
 - Contact the authors for licensing terms and pricing information
 - Unauthorized distribution or commercial use is prohibited
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Case Western Reserve University for providing the bearing dataset
 - PHM 2025 Conference organizers
@@ -176,5 +176,5 @@ This project is licensed under a Commercial License - see the [LICENSE](LICENSE)
 ---
 
 <p align="center">
-  <strong>⭐ If you find this work useful, please consider starring the repository! ⭐</strong>
+  <strong>If you find this work useful, please consider starring the repository!</strong>
 </p>
