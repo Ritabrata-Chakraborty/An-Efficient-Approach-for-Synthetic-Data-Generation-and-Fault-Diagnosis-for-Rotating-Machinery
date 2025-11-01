@@ -118,7 +118,7 @@ If you use this code in your research, please cite our paper:
 
 For questions or collaboration opportunities:
 
-- **Ritabrata Chakraborty**: [ritabratabits@gmail.com]
+- [Ritabrata Chakraborty](https://in.linkedin.com/in/ritabrata-chakraborty-a63268251/)
 
 ## License
 
