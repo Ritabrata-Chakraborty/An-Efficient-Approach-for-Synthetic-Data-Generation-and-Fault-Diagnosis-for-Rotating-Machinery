@@ -23,13 +23,6 @@ This repository contains the official implementation of the paper:
 
 Fault diagnosis in rotating machinery is often hindered by the scarcity of fault samples and the resulting class imbalance. Generative Adversarial Networks (GANs) are effective at dealing with this issue. In this work, an efficient Auxiliary Classifier Wasserstein GAN with Gradient Penalty (ACWGAN-GP)-based framework for synthetic data generation and fault classification has been implemented. This approach leverages a Temporal Convolutional Network (TCN) discriminator and a 1D-CNN generator. Both models incorporate positional embeddings, enabling a single trained network to generate diverse time-series representations that mimic the variability observed in real-world data. To ensure and evaluate the quality of the generated samples, statistical similarity evaluations were conducted using four popular methods, including Pearson Correlation Coefficient (PCC), Cosine Similarity (CS), Kullback-Leibler Divergence (KLDiv), and Maximum Mean Discrepancy (MMD). The generated data effectively augments the limited fault samples, mitigating class imbalance and enhancing the robustness of fault diagnosis. In the proposed framework, the discriminator plays a dual role - it guides the generator during adversarial training and functions independently as a fault classifier. The results of different bearing faults are validated using the CWRU bearing dataset. The obtained results demonstrate the robustness and effectiveness of the present approach.
 
-## Key Contributions
-
-- **Novel AC-WGAN Architecture**: Auxiliary Classifier Wasserstein GAN with Temporal Convolutional Networks for high-quality synthetic vibration data generation
-- **Comprehensive Fault Diagnosis**: Multi-class bearing fault classification with improved accuracy through data augmentation
-- **Statistical Validation**: Rigorous evaluation of generated data quality using statistical metrics and frequency domain analysis
-- **Industrial Applicability**: Demonstrated effectiveness on the widely-used CWRU bearing dataset with practical implications
-
 ## Project Structure
 
 ```
@@ -53,25 +46,6 @@ Predictive Maintenance/
 │       ├── DE/                   
 │       └── FE/                   
 ```
-
-## Key Features
-
-### Advanced GAN Architecture
-- **Auxiliary Classifier WGAN**: Combines generation quality with classification accuracy
-- **Temporal Convolutional Networks**: Captures temporal dependencies in vibration signals
-- **Gradient Penalty**: Ensures stable training and high-quality generation
-
-### Comprehensive Evaluation
-- **Statistical Metrics**: Mean, standard deviation, skewness, and kurtosis comparison
-- **Frequency Domain Analysis**: FFT-based spectral characteristic preservation
-- **Classification Performance**: Fault diagnosis accuracy assessment
-- **Computational Efficiency**: Training time and resource utilization analysis
-
-### Industrial Applications
-- **Multi-Severity Fault Detection**: Handles varying fault severities and types
-- **Real-time Compatibility**: Efficient inference for industrial monitoring systems
-- **Scalable Architecture**: Adaptable to different machinery types and fault patterns
-
 ## Requirements
 
 ### Dependencies
@@ -122,16 +96,6 @@ pip install -r requirements.txt
 jupyter notebook Final.ipynb
 ```
 
-## Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/new-feature`)
-5. Create a Pull Request
-
 ## Citation
 
 If you use this code in your research, please cite our paper:
@@ -165,13 +129,6 @@ This project is licensed under a Commercial License - see the [LICENSE](LICENSE)
 - Academic and research use may be permitted under specific terms
 - Contact the authors for licensing terms and pricing information
 - Unauthorized distribution or commercial use is prohibited
-
-## Acknowledgments
-
-- Case Western Reserve University for providing the bearing dataset
-- PHM 2025 Conference organizers
-- KU Leuven for hosting the conference
-- Open-source community for PyTorch and related libraries
 
 ---
 
