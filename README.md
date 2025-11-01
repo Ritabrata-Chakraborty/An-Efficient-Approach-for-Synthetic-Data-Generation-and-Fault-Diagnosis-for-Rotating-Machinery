@@ -12,7 +12,7 @@ This repository contains the official implementation of the paper:
 
 **"An Efficient Approach for Synthetic Data Generation and Fault Diagnosis for Rotating Machinery"**
 
-- **Authors**: Ritabrata Chakraborty, Tauheed Mian, Pradeep Kundu
+- **Authors**: [Ritabrata Chakraborty](https://in.linkedin.com/in/ritabrata-chakraborty-a63268251/), Tauheed Mian, Pradeep Kundu
 - **Conference**: 15th Prognostics and System Health Management Conference (PHM 2025)
 - **Venue**: KU Leuven, Belgium
 - **Date**: June 2025
@@ -113,12 +113,6 @@ If you use this code in your research, please cite our paper:
   doi={10.1049/icp.2025.2364}
 }
 ```
-
-## Contact
-
-For questions or collaboration opportunities:
-
-- [Ritabrata Chakraborty](https://in.linkedin.com/in/ritabrata-chakraborty-a63268251/)
 
 ## License
 
