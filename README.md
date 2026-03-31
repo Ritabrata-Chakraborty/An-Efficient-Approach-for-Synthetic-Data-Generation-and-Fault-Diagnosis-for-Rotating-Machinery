@@ -1,6 +1,6 @@
 # An Efficient Approach for Synthetic Data Generation and Fault Diagnosis for Rotating Machinery
 
-[![Paper](https://img.shields.io/badge/Conference-PHM%202025-blue.svg)]([https://www.phm2025.org/](https://ieeexplore.ieee.org/document/11090096))
+[![Paper](https://img.shields.io/badge/Conference-PHM%202025-blue.svg)]((https://ieeexplore.ieee.org/document/11090096))
 [![DOI](https://img.shields.io/badge/DOI-10.1049/icp.2025.2364-blue.svg)](https://doi.org/10.1049/icp.2025.2364)
 
 ## Paper Information
