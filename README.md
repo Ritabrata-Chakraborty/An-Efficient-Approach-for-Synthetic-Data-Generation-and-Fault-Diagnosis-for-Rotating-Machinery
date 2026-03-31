@@ -39,21 +39,9 @@ Predictive Maintenance/
 │   └── discriminator_training_metrics_*.csv 
 ├── Plots/                                   # Visualizations and analysis plots
 ├── Datasets/                                # Original dataset files
-│   └── CWRU/                     # Case Western Reserve University dataset
+│   └── CWRU/                                # Case Western Reserve University dataset
 │       ├── DE/                   
 │       └── FE/                   
-```
-## Requirements
-
-### Dependencies
-```
-torch>=1.9.0
-numpy>=1.21.0
-pandas>=1.3.0
-matplotlib>=3.4.0
-scikit-learn>=1.0.0
-scipy>=1.7.0
-tqdm>=4.62.0
 ```
 
 ## Dataset Information
