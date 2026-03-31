@@ -1,10 +1,7 @@
 # An Efficient Approach for Synthetic Data Generation and Fault Diagnosis for Rotating Machinery
 
-[![Conference](https://img.shields.io/badge/Conference-PHM%202025-blue.svg)](https://www.phm2025.org/)
+[![Paper](https://img.shields.io/badge/Conference-PHM%202025-blue.svg)]([https://www.phm2025.org/](https://ieeexplore.ieee.org/document/11090096))
 [![DOI](https://img.shields.io/badge/DOI-10.1049/icp.2025.2364-blue.svg)](https://doi.org/10.1049/icp.2025.2364)
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-1.9+-red.svg)](https://pytorch.org/)
-[![License](https://img.shields.io/badge/License-Commercial-orange.svg)](LICENSE)
 
 ## Paper Information
 
@@ -21,7 +18,7 @@ This repository contains the official implementation of the paper:
 
 ## Abstract
 
-Fault diagnosis in rotating machinery is often hindered by the scarcity of fault samples and the resulting class imbalance. Generative Adversarial Networks (GANs) are effective at dealing with this issue. In this work, an efficient Auxiliary Classifier Wasserstein GAN with Gradient Penalty (ACWGAN-GP)-based framework for synthetic data generation and fault classification has been implemented. This approach leverages a Temporal Convolutional Network (TCN) discriminator and a 1D-CNN generator. Both models incorporate positional embeddings, enabling a single trained network to generate diverse time-series representations that mimic the variability observed in real-world data. To ensure and evaluate the quality of the generated samples, statistical similarity evaluations were conducted using four popular methods, including Pearson Correlation Coefficient (PCC), Cosine Similarity (CS), Kullback-Leibler Divergence (KLDiv), and Maximum Mean Discrepancy (MMD). The generated data effectively augments the limited fault samples, mitigating class imbalance and enhancing the robustness of fault diagnosis. In the proposed framework, the discriminator plays a dual role - it guides the generator during adversarial training and functions independently as a fault classifier. The results of different bearing faults are validated using the CWRU bearing dataset. The obtained results demonstrate the robustness and effectiveness of the present approach.
+Fault diagnosis in rotating machinery is often hindered by the scarcity of fault samples and the resulting class imbalance. Generative Adversarial Networks (GANs) are effective at dealing with this issue. In this work, an efficient Auxiliary Classifier Wasserstein GAN with Gradient Penalty (ACWGAN-GP)-based framework for synthetic data generation and fault classification has been implemented. This approach leverages a Temporal Convolutional Network (TCN) discriminator and a 1D-CNN generator. Both models incorporate positional embeddings, enabling a single trained network to generate diverse time-series representations that mimic the variability observed in real-world data. To ensure and evaluate the quality of the generated samples, statistical similarity was evaluated using four popular methods: Pearson Correlation Coefficient (PCC), Cosine Similarity (CS), Kullback-Leibler Divergence (KLDiv), and Maximum Mean Discrepancy (MMD). The generated data effectively augment the limited number of fault samples, mitigating class imbalance and enhancing the robustness of fault diagnosis. In the proposed framework, the discriminator plays a dual role: it guides the generator during adversarial training and serves as an independent fault classifier. The results of different bearing faults are validated using the CWRU bearing dataset. The obtained results demonstrate the robustness and effectiveness of the present approach.
 
 ## Project Structure
 
@@ -101,28 +98,18 @@ jupyter notebook Final.ipynb
 If you use this code in your research, please cite our paper:
 
 ```bibtex
-@inproceedings{chakraborty2025efficient,
-  title={An Efficient Approach for Synthetic Data Generation and Fault Diagnosis for Rotating Machinery},
+@INPROCEEDINGS{11090096,
   author={Chakraborty, Ritabrata and Mian, Tauheed and Kundu, Pradeep},
-  booktitle={IET Conference Proceedings},
-  volume={2025},
-  number={10},
-  pages={241--247},
+  booktitle={15th Prognostics and System Health Management Conference (PHM 2025)}, 
+  title={An efficient approach for synthetic data generation and fault diagnosis for rotating machinery}, 
   year={2025},
-  publisher={IET},
+  volume={2025},
+  number={},
+  pages={241-247},
+  keywords={},
   doi={10.1049/icp.2025.2364}
 }
 ```
-
-## License
-
-This project is licensed under a Commercial License - see the [LICENSE](LICENSE) file for details. 
-
-** Commercial License Notice:**
-- This software is proprietary and requires a paid license for commercial use
-- Academic and research use may be permitted under specific terms
-- Contact the authors for licensing terms and pricing information
-- Unauthorized distribution or commercial use is prohibited
 
 ---
 
