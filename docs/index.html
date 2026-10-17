@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An Efficient Approach for Synthetic Data Generation and Fault Diagnosis for Rotating Machinery</title>
+<meta name="description" content="ACWGAN-GP with a TCN discriminator and 1D-CNN generator for synthetic vibration data and bearing fault diagnosis on the CWRU dataset. PHM 2025, IET Conference Proceedings.">
+<link rel="canonical" href="https://robotics1106.github.io/An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery/">
+
+<!-- Google Scholar (Highwire Press) -->
+<meta name="citation_title" content="An Efficient Approach for Synthetic Data Generation and Fault Diagnosis for Rotating Machinery">
+<meta name="citation_author" content="Chakraborty, Ritabrata">
+<meta name="citation_author_institution" content="Department of Mechanical Engineering, BITS Pilani, Pilani, India">
+<meta name="citation_author" content="Mian, Tauheed">
+<meta name="citation_author_institution" content="LMSD, Department of Mechanical Engineering, KU Leuven, Leuven, Belgium">
+<meta name="citation_author" content="Kundu, Pradeep">
+<meta name="citation_author_institution" content="LMSD, Department of Mechanical Engineering, KU Leuven, Leuven, Belgium">
+<meta name="citation_publication_date" content="2025/06">
+<meta name="citation_journal_title" content="IET Conference Proceedings">
+<meta name="citation_conference_title" content="15th Prognostics and System Health Management Conference (PHM 2025)">
+<meta name="citation_publisher" content="Institution of Engineering and Technology (IET)">
+<meta name="citation_volume" content="2025">
+<meta name="citation_issue" content="10">
+<meta name="citation_firstpage" content="241">
+<meta name="citation_lastpage" content="247">
+<meta name="citation_doi" content="10.1049/icp.2025.2364">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="fault diagnosis; rotating machinery; generative adversarial network; ACWGAN-GP; temporal convolutional network; synthetic data generation; class imbalance; CWRU bearing dataset">
+<meta name="citation_abstract_html_url" content="https://robotics1106.github.io/An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery/">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="An Efficient Approach for Synthetic Data Generation and Fault Diagnosis for Rotating Machinery">
+<meta property="og:description" content="ACWGAN-GP (TCN discriminator, 1D-CNN generator) for synthetic vibration data and bearing fault diagnosis. PHM 2025.">
+<meta property="og:url" content="https://robotics1106.github.io/An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery/">
+<meta property="og:image" content="https://robotics1106.github.io/An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery/assets/fft_real_vs_generated.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "An Efficient Approach for Synthetic Data Generation and Fault Diagnosis for Rotating Machinery",
+  "author": [
+    {"@type": "Person", "name": "Ritabrata Chakraborty", "affiliation": {"@type": "Organization", "name": "BITS Pilani"}},
+    {"@type": "Person", "name": "Tauheed Mian", "affiliation": {"@type": "Organization", "name": "KU Leuven"}},
+    {"@type": "Person", "name": "Pradeep Kundu", "affiliation": {"@type": "Organization", "name": "KU Leuven"}}
+  ],
+  "datePublished": "2025-06",
+  "identifier": "https://doi.org/10.1049/icp.2025.2364",
+  "sameAs": ["https://doi.org/10.1049/icp.2025.2364", "https://ieeexplore.ieee.org/document/11090096"],
+  "isPartOf": {"@type": "PublicationIssue", "issueNumber": "10", "isPartOf": {"@type": "PublicationVolume", "volumeNumber": "2025", "isPartOf": {"@type": "Periodical", "name": "IET Conference Proceedings"}}},
+  "pageStart": "241",
+  "pageEnd": "247",
+  "publisher": {"@type": "Organization", "name": "Institution of Engineering and Technology (IET)"},
+  "inLanguage": "en",
+  "keywords": "fault diagnosis, rotating machinery, GAN, ACWGAN-GP, temporal convolutional network, synthetic data, CWRU",
+  "url": "https://robotics1106.github.io/An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery/",
+  "isBasedOn": "https://github.com/robotics1106/An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap">
+
+<style>
+:root {
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Inter", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  --bg: #f8faf9; --fg: #1a1e1d; --muted: #59625f; --rule: #dde3e1;
+  --card: #ffffff; --accent: #0f6b5c; --accent-soft: #e3f1ee; --code: #edf2f0; --head: #f0f4f3;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111615; --fg: #e8eceb; --muted: #9fa9a6; --rule: #29302e;
+    --card: #181e1d; --accent: #6fd1bd; --accent-soft: #17302b; --code: #1b2120; --head: #1d2422;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111615; --fg: #e8eceb; --muted: #9fa9a6; --rule: #29302e;
+  --card: #181e1d; --accent: #6fd1bd; --accent-soft: #17302b; --code: #1b2120; --head: #1d2422;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 18px/1.7 var(--serif);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+header { padding: 64px 0 34px; text-align: center; border-bottom: 1px solid var(--rule); }
+.kicker { font: 600 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+h1 { font-size: clamp(26px, 4.2vw, 38px); line-height: 1.18; margin: 18px auto 22px; max-width: 24em; font-weight: 700; letter-spacing: -.015em; text-wrap: balance; }
+.authors { font-size: 19px; margin: 0 0 8px; }
+.authors .name { white-space: nowrap; }
+.authors a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+.authors a:hover { text-decoration-color: var(--accent); }
+.affil { font: 14px/1.55 var(--sans); color: var(--muted); margin: 0; }
+.citeline { font: 13px/1.5 var(--sans); color: var(--muted); margin: 14px auto 0; max-width: 46em; text-wrap: balance; }
+.citeline a { color: var(--muted); }
+.buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+.btn {
+  display: inline-flex; align-items: center; font: 600 14px/1 var(--sans); color: var(--bg); background: var(--fg);
+  padding: 11px 20px; border: 1px solid var(--fg); border-radius: 999px; text-decoration: none; transition: opacity .15s;
+}
+.btn.ghost { background: transparent; color: var(--fg); border-color: var(--rule); }
+.btn.ghost:hover { border-color: var(--muted); opacity: 1; }
+.btn:hover { opacity: .85; }
+section { padding: 44px 0; border-bottom: 1px solid var(--rule); }
+h2 { font: 600 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 20px; }
+h3 { font: 600 16px/1.4 var(--sans); margin: 32px 0 12px; }
+p { margin: 0 0 1em; }
+section > p, section li { text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; }
+sub, sup { line-height: 0; }
+.keywords { font: 14px/1.6 var(--sans); color: var(--muted); margin: 0; text-align: left; hyphens: manual; }
+.keywords b { color: var(--fg); font-weight: 600; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 0; }
+.stat { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; }
+.stat b { display: block; font: 700 27px/1.15 var(--serif); color: var(--accent); white-space: nowrap; }
+.stat small { display: block; font: 13.5px/1.45 var(--sans); color: var(--muted); margin-top: 6px; }
+.note { font: 14px/1.6 var(--sans); color: var(--muted); background: var(--card); border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 8px; padding: 12px 16px; margin: 22px 0 0; text-align: left; }
+ul.spec { margin: 0 0 1em; padding-left: 1.2em; }
+ul.spec li { margin-bottom: .35em; }
+figure { margin: 28px 0; }
+figure a { display: block; }
+figure img { width: 100%; height: auto; display: block; border-radius: 8px; background: #fff; border: 1px solid var(--rule); }
+figure.narrow { max-width: 720px; margin-left: auto; margin-right: auto; }
+figcaption { text-wrap: balance; font: 14px/1.6 var(--sans); color: var(--muted); margin: 12px auto 0; max-width: 46em; text-align: center; }
+figcaption b { color: var(--fg); }
+.table-wrap { overflow-x: auto; margin: 0 0 28px; border: 1px solid var(--rule); border-radius: 10px; background: var(--card); }
+table { width: 100%; border-collapse: collapse; font: 15px/1.45 var(--serif); }
+th, td { padding: 9px 11px; border-bottom: 1px solid var(--rule); text-align: center; vertical-align: middle; }
+thead th { background: var(--head); font-weight: 600; font-size: 14px; line-height: 1.35; color: var(--fg); }
+tbody tr:last-child td { border-bottom: 0; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.best td { background: var(--accent-soft); }
+tr.mean td { font-weight: 600; background: var(--head); }
+.tcap { font: 14px/1.6 var(--sans); color: var(--muted); margin: 0 auto 10px; max-width: 46em; text-align: center; text-wrap: balance; }
+.tcap b { color: var(--fg); }
+.table-wrap + .tnote { margin-top: -18px; }
+.tnote { font: 13px/1.55 var(--sans); color: var(--muted); margin: 8px auto 28px; max-width: 46em; text-align: center; text-wrap: balance; }
+pre {
+  background: var(--code); border: 1px solid var(--rule); border-radius: 8px;
+  padding: 16px 18px; overflow-x: auto; font: 13px/1.6 var(--mono); margin: 0; white-space: pre;
+}
+code { font: .86em var(--mono); background: var(--code); padding: 1px 5px; border-radius: 4px; }
+.head-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.head-row h2 { margin: 0; }
+.copy { font: 600 12px/1 var(--sans); background: var(--accent-soft); color: var(--accent); border: 0; border-radius: 6px; padding: 7px 10px; cursor: pointer; }
+a { color: var(--accent); text-underline-offset: 2px; }
+footer { padding: 32px 0 56px; font: 13px/1.7 var(--sans); color: var(--muted); text-align: center; }
+@media (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  header { padding: 40px 0 28px; }
+  section { padding: 36px 0; }
+  .stats { gap: 10px; }
+  .stat { padding: 14px; }
+  .stat b { font-size: 23px; }
+  .buttons { gap: 8px; }
+  .btn { padding: 9px 14px; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">PHM 2025 &middot; IET Conference Proceedings</div>
+    <h1>An Efficient Approach for Synthetic Data Generation and Fault Diagnosis for Rotating Machinery</h1>
+    <p class="authors">
+      <span class="name"><a href="https://scholar.google.com/citations?user=JikCewwAAAAJ&amp;hl=en">Ritabrata Chakraborty</a><sup>1</sup></span>,
+      <span class="name">Tauheed Mian<sup>2,3</sup></span> and
+      <span class="name">Pradeep Kundu<sup>2,3,4</sup></span>
+    </p>
+    <p class="affil"><sup>1</sup>Department of Mechanical Engineering, BITS&nbsp;Pilani, Pilani, India</p>
+    <p class="affil"><sup>2</sup>LMSD, Department of Mechanical Engineering, KU&nbsp;Leuven, Leuven, Belgium</p>
+    <p class="affil"><sup>3</sup>M-Group, Campus Bruges, KU&nbsp;Leuven, Bruges, Belgium &middot; <sup>4</sup>Leuven Institute for AI, KU&nbsp;Leuven, Belgium</p>
+    <p class="citeline">15th Prognostics and System Health Management Conference (PHM&nbsp;2025), KU&nbsp;Leuven, Belgium, June 2025 &middot; IET Conference Proceedings 2025(10):&nbsp;241–247 &middot; <a href="https://doi.org/10.1049/icp.2025.2364">doi:10.1049/icp.2025.2364</a></p>
+    <div class="buttons">
+      <a class="btn" href="https://ieeexplore.ieee.org/document/11090096">Paper</a>
+      <a class="btn ghost" href="https://github.com/robotics1106/An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery">Code</a>
+      <a class="btn ghost" href="https://doi.org/10.1049/icp.2025.2364">DOI</a>
+      <a class="btn ghost" href="#citation">Cite</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="abstract">
+  <h2>Abstract</h2>
+  <p>Fault diagnosis in rotating machinery is often hindered by the scarcity of fault samples and the resulting class imbalance. Generative Adversarial Networks (GANs) are effective at dealing with this issue. In this work, an efficient Auxiliary Classifier Wasserstein GAN with Gradient Penalty (ACWGAN-GP)-based framework for synthetic data generation and fault classification has been implemented. This approach leverages a Temporal Convolutional Network (TCN) discriminator and a 1D-CNN generator. Both models incorporate positional embeddings, enabling a single trained network to generate diverse time-series representations that mimic the variability observed in real-world data. To ensure and evaluate the quality of the generated samples, statistical similarity was evaluated using four popular methods: Pearson Correlation Coefficient (PCC), Cosine Similarity (CS), Kullback-Leibler Divergence (KLDiv), and Maximum Mean Discrepancy (MMD). The generated data effectively augment the limited number of fault samples, mitigating class imbalance and enhancing the robustness of fault diagnosis. In the proposed framework, the discriminator plays a dual role: it guides the generator during adversarial training and serves as an independent fault classifier. The results of different bearing faults are validated using the CWRU bearing dataset. The obtained results demonstrate the robustness and effectiveness of the present approach.</p>
+  <p class="keywords"><b>Keywords:</b> fault diagnosis, rotating machinery, generative adversarial networks, ACWGAN-GP, temporal convolutional networks, synthetic data, class imbalance, CWRU bearing dataset</p>
+</section>
+
+<section id="highlights">
+  <h2>Key results</h2>
+  <div class="stats">
+    <div class="stat"><b>97.9%</b><small>test accuracy with 100 real + 400 synthetic samples per fault class</small></div>
+    <div class="stat"><b>95.6%</b><small>test accuracy with 100 real samples per fault class alone</small></div>
+    <div class="stat"><b>0.69–0.85</b><small>mean Pearson correlation of generated vs real spectra, per class</small></div>
+    <div class="stat"><b>10 classes</b><small>CWRU drive-end bearing conditions (normal + 9 faults)</small></div>
+  </div>
+  <p class="note">All numbers on this page are reproduced by the released notebook (<code>Final.ipynb</code>) and checkpoints in the repository. The paper reports the full evaluation.</p>
+</section>
+
+<section id="method">
+  <h2>Method</h2>
+  <p>The framework is an auxiliary-classifier Wasserstein GAN with gradient penalty. A 1D-CNN generator maps a 100-dimensional noise vector, concatenated with a learned class-label embedding, through five transposed-convolution layers to a 1824-sample vibration sequence. The discriminator is a temporal convolutional network with nine residual blocks (64 channels, kernel size 5, dilations 1 to 256) and two output heads: a Wasserstein critic score that guides the generator, and a class head that makes the same network a fault classifier.</p>
+  <ul class="spec">
+    <li><b>Data:</b> CWRU drive-end accelerometer signals at 12&nbsp;kHz, split into overlapping sequences of 1824 samples.</li>
+    <li><b>Imbalanced GAN training set:</b> 4800 normal sequences and 480 per fault class (10%); 200 test and 200 validation sequences per class.</li>
+    <li><b>GAN training:</b> 50 epochs, batch size 32, learning rate 10<sup>−4</sup>, gradient-penalty weight 10, five critic updates per generator update.</li>
+    <li><b>Quality check:</b> PCC, cosine similarity, KL divergence, MMD and a two-sample t-test between the FFT magnitude spectra of real and generated sequences, averaged over 100 generated samples per class.</li>
+    <li><b>Fault diagnosis:</b> the TCN discriminator is trained as a classifier for 20 epochs on 100 real sequences per fault class (1000 normal), augmented with 0, 400 or 900 generated sequences per fault class.</li>
+  </ul>
+  <figure class="narrow">
+    <a href="assets/raw_signals.png"><img src="assets/raw_signals.png" alt="Ten panels of raw vibration time series, one for each CWRU bearing condition" width="1486" height="1989" loading="lazy"></a>
+    <figcaption><b>Figure 1:</b> Raw Drive-End Vibration Signals for the Ten CWRU Bearing Conditions (Normal and Ball, Inner Race and Outer Race Faults of 7, 14 and 21 mils)</figcaption>
+  </figure>
+</section>
+
+<section id="results">
+  <h2>Results</h2>
+
+  <h3>Quality of Generated Signals</h3>
+  <p class="tcap"><b>Table 1:</b> Similarity Between Real and Generated FFT Magnitude Spectra, per Class (Mean of 100 Generated Samples)</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Class</th><th>Condition</th><th>Fault Size (mils)</th><th>PCC ↑</th><th>Cosine Similarity ↑</th><th>KL Divergence ↓</th><th>MMD ↓</th><th>t-Test p-Value</th></tr></thead>
+      <tbody>
+        <tr><td>N</td><td>Normal</td><td class="num">—</td><td class="num">0.853</td><td class="num">0.874</td><td class="num">0.306</td><td class="num">0.014</td><td class="num">0.646</td></tr>
+        <tr><td>7BA</td><td>Ball Fault</td><td class="num">7</td><td class="num">0.795</td><td class="num">0.806</td><td class="num">0.442</td><td class="num">0.097</td><td class="num">0.127</td></tr>
+        <tr><td>7IR</td><td>Inner Race Fault</td><td class="num">7</td><td class="num">0.690</td><td class="num">0.744</td><td class="num">0.452</td><td class="num">0.085</td><td class="num">0.089</td></tr>
+        <tr><td>7OR1</td><td>Outer Race Fault</td><td class="num">7</td><td class="num">0.772</td><td class="num">0.795</td><td class="num">0.390</td><td class="num">0.089</td><td class="num">0.253</td></tr>
+        <tr><td>14BA</td><td>Ball Fault</td><td class="num">14</td><td class="num">0.725</td><td class="num">0.759</td><td class="num">0.488</td><td class="num">0.070</td><td class="num">0.248</td></tr>
+        <tr><td>14IR</td><td>Inner Race Fault</td><td class="num">14</td><td class="num">0.764</td><td class="num">0.789</td><td class="num">0.406</td><td class="num">0.065</td><td class="num">0.194</td></tr>
+        <tr><td>14OR1</td><td>Outer Race Fault</td><td class="num">14</td><td class="num">0.739</td><td class="num">0.766</td><td class="num">0.434</td><td class="num">0.098</td><td class="num">0.051</td></tr>
+        <tr><td>21BA</td><td>Ball Fault</td><td class="num">21</td><td class="num">0.763</td><td class="num">0.783</td><td class="num">0.402</td><td class="num">0.073</td><td class="num">0.143</td></tr>
+        <tr><td>21IR</td><td>Inner Race Fault</td><td class="num">21</td><td class="num">0.773</td><td class="num">0.793</td><td class="num">0.415</td><td class="num">0.098</td><td class="num">0.167</td></tr>
+        <tr><td>21OR1</td><td>Outer Race Fault</td><td class="num">21</td><td class="num">0.702</td><td class="num">0.729</td><td class="num">0.620</td><td class="num">0.081</td><td class="num">0.270</td></tr>
+        <tr class="mean"><td colspan="3">Mean (10 Classes)</td><td class="num">0.758</td><td class="num">0.784</td><td class="num">0.436</td><td class="num">0.077</td><td class="num">0.219</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tnote">↑ higher is better; ↓ lower is better. A t-test p-value above 0.05 indicates no significant difference between real and generated spectra.</p>
+
+  <figure class="narrow">
+    <a href="assets/fft_real_vs_generated.png"><img src="assets/fft_real_vs_generated.png" alt="Ten panels comparing real and generated FFT magnitude spectra for each bearing condition" width="1189" height="1589" loading="lazy"></a>
+    <figcaption><b>Figure 2:</b> FFT Magnitude Spectra of Real (Black, Solid) and Generated (Red, Dashed) Signals for Each Bearing Condition, 0–1500&nbsp;Hz</figcaption>
+  </figure>
+
+  <h3>Fault Diagnosis</h3>
+  <p class="tcap"><b>Table 2:</b> Test Performance of the TCN Classifier Trained with and without Generated Samples (200 Test Sequences per Class)</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Samples per Fault Class</th><th>Real</th><th>Generated</th><th>Accuracy (%)</th><th>Precision</th><th>Recall</th><th>F1-Score</th></tr></thead>
+      <tbody>
+        <tr><td class="num">100</td><td class="num">100</td><td class="num">0</td><td class="num">95.60</td><td class="num">0.96</td><td class="num">0.96</td><td class="num">0.96</td></tr>
+        <tr class="best"><td class="num">500</td><td class="num">100</td><td class="num">400</td><td class="num">97.90</td><td class="num">0.98</td><td class="num">0.98</td><td class="num">0.98</td></tr>
+        <tr><td class="num">1000</td><td class="num">100</td><td class="num">900</td><td class="num">96.15</td><td class="num">0.96</td><td class="num">0.96</td><td class="num">0.96</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tnote">Precision, recall and F1-score are weighted averages over the ten classes. The normal class has 1000 real training sequences in every setting.</p>
+
+  <figure>
+    <a href="assets/confusion_matrices.png"><img src="assets/confusion_matrices.png" alt="Three confusion matrices for classifiers trained on 100, 500 and 1000 samples per fault class" width="1443" height="488" loading="lazy"></a>
+    <figcaption><b>Figure 3:</b> Confusion Matrices on the Test Set. (Left to Right) 100 Real; 100 Real + 400 Generated; 100 Real + 900 Generated Samples per Fault Class</figcaption>
+  </figure>
+</section>
+
+<section id="code">
+  <h2>Code</h2>
+  <p>The repository contains the full pipeline in a single notebook, the trained generator, discriminator and classifier checkpoints, the generated signals and the CWRU data used.</p>
+<pre>git clone https://github.com/robotics1106/An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery.git
+cd An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery
+jupyter notebook Final.ipynb</pre>
+</section>
+
+<section id="citation">
+  <div class="head-row">
+    <h2>Citation</h2>
+    <button class="copy" type="button" onclick="navigator.clipboard.writeText(document.getElementById('bib').innerText).then(()=>{this.textContent='Copied';setTimeout(()=>this.textContent='Copy BibTeX',1500)})">Copy BibTeX</button>
+  </div>
+<pre id="bib">@inproceedings{chakraborty2025efficient,
+  title     = {An Efficient Approach for Synthetic Data Generation and
+               Fault Diagnosis for Rotating Machinery},
+  author    = {Chakraborty, Ritabrata and Mian, Tauheed and Kundu, Pradeep},
+  booktitle = {15th Prognostics and System Health Management Conference
+               (PHM 2025)},
+  series    = {IET Conference Proceedings},
+  volume    = {2025},
+  number    = {10},
+  pages     = {241--247},
+  publisher = {IET},
+  year      = {2025},
+  doi       = {10.1049/icp.2025.2364}
+}</pre>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    Published version: <a href="https://doi.org/10.1049/icp.2025.2364">IET Conference Proceedings</a>
+    &middot; <a href="https://robotics1106.github.io/Portfolio/">Ritabrata Chakraborty</a>
+  </div>
+</footer>
+
+</body>
+</html>
