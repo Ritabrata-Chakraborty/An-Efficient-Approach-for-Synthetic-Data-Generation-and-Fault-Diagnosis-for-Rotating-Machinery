@@ -1,6 +1,6 @@
 # An Efficient Approach for Synthetic Data Generation and Fault Diagnosis for Rotating Machinery
 
-[![Project page](https://img.shields.io/badge/Project-Page-0F6B5C?logo=googlechrome&logoColor=white)](https://robotics1106.github.io/An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery/) [![Paper](https://img.shields.io/badge/Conference-PHM%202025-blue.svg)](https://ieeexplore.ieee.org/document/11090096) [![DOI](https://img.shields.io/badge/DOI-10.1049/icp.2025.2364-blue.svg)](https://doi.org/10.1049/icp.2025.2364)
+[![Project page](https://img.shields.io/badge/Project-Page-0F6B5C?logo=googlechrome&logoColor=white)](https://ritabrata-chakraborty.github.io/An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery/) [![Paper](https://img.shields.io/badge/Conference-PHM%202025-blue.svg)](https://ieeexplore.ieee.org/document/11090096) [![DOI](https://img.shields.io/badge/DOI-10.1049/icp.2025.2364-blue.svg)](https://doi.org/10.1049/icp.2025.2364)
 
 ## Paper Information
 
@@ -65,7 +65,7 @@ The implementation uses the **Case Western Reserve University (CWRU) Bearing Dat
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/robotics1106/An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery.git
+git clone https://github.com/Ritabrata-Chakraborty/An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery.git
 cd An-Efficient-Approach-for-Synthetic-Data-Generation-and-Fault-Diagnosis-for-Rotating-Machinery
 ```
 
